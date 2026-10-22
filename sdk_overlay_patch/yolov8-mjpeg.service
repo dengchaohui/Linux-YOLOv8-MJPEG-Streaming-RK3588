@@ -1,0 +1,16 @@
+[Unit]
+Description=YOLOv8 Digit Recognition MJPEG Server
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/userdata/rknn_yolov8_demo_new
+Environment=LD_LIBRARY_PATH=/userdata/rknn_yolov8_demo_new/lib
+ExecStartPre=/bin/sleep 15
+ExecStart=/usr/bin/python3 /opt/yolov8_digit/rknn_infer_mjpeg.py
+Restart=always
+RestartSec=5
+User=root
+
+[Install]
+WantedBy=multi-user.target
